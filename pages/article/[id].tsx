@@ -23,7 +23,7 @@ export default function Article({ article }: Props) {
           {article.tag && (
             <div className="flex items-center justify-start mt-4 mb-4">
               <div className="px-2 py-1 font-bold bg-red-400 text-white rounded-lg">
-                #{article.tag}
+                #{article.tag.name}
               </div>
             </div>
           )}

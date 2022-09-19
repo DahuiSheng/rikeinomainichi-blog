@@ -1,3 +1,5 @@
+import { Tag } from "./tag"
+
 export type Article = {
     id: string
     createdAt: string
@@ -11,5 +13,5 @@ export type Article = {
       height: number
       width: number
     }
-    tag: string
-  }
+    tag: Tag
+}
