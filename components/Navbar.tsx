@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Navbar = () => {
     return (
-        <div className="navbar fixed z-50 bg-orange-100 rounded-r-xl">
+        <div className="navbar fixed z-50 bg-orange-100 rounded-b-sm">
 
             {/* ハンバーガーメニュー */}
             <div className="flex-none">

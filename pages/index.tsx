@@ -17,6 +17,8 @@ export default function Home({ articles, tag }: Props) {
       <h1 className="container mx-auto px-10 pt-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
         記事一覧
       </h1>
+      
+      {/* タグ一覧 */}
       <div>
         <ul>
         {tag.map((tag) => (
@@ -28,6 +30,8 @@ export default function Home({ articles, tag }: Props) {
         ))}
         </ul>
       </div>
+
+      {/* 投稿一覧 */}
       <div className="container mx-auto p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         {articles.map(article => (
           <div className="rounded overflow-hidden shadow-lg" key={article.id}>
@@ -57,6 +61,8 @@ export default function Home({ articles, tag }: Props) {
   )
 }
 
+
+// 投稿データとタグデータをAPIより取得
 export const getStaticProps = async () => {
   const data = await client.get({ endpoint: 'articles', });
   const categoryData = await client.get({ endpoint: 'tag' });
@@ -68,14 +74,3 @@ export const getStaticProps = async () => {
     },
   };
 };
-
-
-// export const getStaticProps = async () => {
-//   const data = await client.get({ endpoint: "ariticles", queries: { limit:20, offset: 0} });
-
-//   return {
-//     props: {
-//       ar
-//     }
-//   }
-// }
