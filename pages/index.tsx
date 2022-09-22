@@ -5,6 +5,7 @@ import { client } from '../libs/client'
 import type { Article } from "../types/article"
 import Link from "next/link"
 import { Tag } from '../types/tag'
+import InfoCouple from '../components/InfoCouple'
 
 type Props = {
   articles: Array<Article>;
@@ -57,6 +58,7 @@ export default function Home({ articles, tag }: Props) {
           </div>
         ))}
       </div>
+      <InfoCouple />
     </>
   )
 }

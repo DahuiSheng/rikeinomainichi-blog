@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center p-4 bg-white text-base-content">
+        <footer className="footer footer-center p-2 bg-white text-base-content text-sm">
             <div>
                 <Link href={"/"}>
                     <p className="text-base">♫ 利用規約</p>
