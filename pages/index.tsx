@@ -6,6 +6,7 @@ import type { Article } from "../types/article"
 import Link from "next/link"
 import { Tag } from '../types/tag'
 import InfoCouple from '../components/InfoCouple'
+import * as gtag from '../libs/gtag';
 
 type Props = {
   articles: Array<Article>;
@@ -13,6 +14,14 @@ type Props = {
 }
 
 export default function Home({ articles, tag }: Props) {
+  const ClickEvent = () => {
+    gtag.event({
+      action: 'click_event',
+      category: 'link_button',
+      label: 'event',
+    })
+  }
+
   return (
     <>
       <h1 className="container mx-auto px-10 pt-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
@@ -24,7 +33,8 @@ export default function Home({ articles, tag }: Props) {
         <ul>
         {tag.map((tag) => (
           <li key={tag.id}>
-            <Link href={`/tag/${tag.id}`}>
+            <Link href={`/tag/${tag.id}`}
+                  onClick={ClickEvent}>
               <a>{tag.name}</a>
             </Link>
           </li>
@@ -36,7 +46,9 @@ export default function Home({ articles, tag }: Props) {
       <div className="container mx-auto p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         {articles.map(article => (
           <div className="rounded overflow-hidden shadow-lg" key={article.id}>
-            <Link href={`/article/${article.id}`} passHref>
+            <Link href={`/article/${article.id}`} passHref
+                  onClick={ClickEvent}
+            >
               <img
                 className="w-full"
                 src={article.eyecatch.url}
@@ -44,7 +56,9 @@ export default function Home({ articles, tag }: Props) {
               />
             </Link>
             <div className="px-6 py-4">
-              <Link href={`/article/${article.id}`} passHref>
+              <Link href={`/article/${article.id}`} passHref
+                    onClick={ClickEvent}
+              >
                <a>{article.title}</a>
               </Link>
             </div>

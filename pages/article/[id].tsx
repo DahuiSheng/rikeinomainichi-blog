@@ -1,12 +1,20 @@
 import { GetServerSideProps } from 'next';
 import type { Article } from '../../types/article';
 import { client } from '../../libs/client';
+import * as gtag from '../../libs/gtag';
 
 type Props = {
   article: Article;
 };
 
 export default function Article({ article }: Props) {
+  const ClickEvent = () => {
+    gtag.event({
+      action: 'click_event',
+      category: 'link_button',
+      label: 'event',
+    })
+  }
   return (
     <div className="bg-gray-50">
       <div className="px-10 py-6 mx-auto">

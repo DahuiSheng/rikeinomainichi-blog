@@ -1,12 +1,21 @@
 import Link from "next/link";
 import { client } from "../../libs/client";
 import { Article } from "../../types/article";
+import * as gtag from '../../libs/gtag';
 
 type Props = {
     articles: Array<Article>;
   };
 
 export default function CategoryId({ articles }: Props) {
+  const ClickEvent = () => {
+    gtag.event({
+      action: 'click_event',
+      category: 'link_button',
+      label: 'event',
+    })
+  }
+
   // カテゴリーに紐付いたコンテンツがない場合に表示
   if (articles.length === 0) {
     return <div>ブログコンテンツがありません</div>;
@@ -16,7 +25,8 @@ export default function CategoryId({ articles }: Props) {
       <ul>
         {articles.map(article => (
           <li key={article.id}>
-            <Link href={`/blog/${article.id}`}>
+            <Link href={`/blog/${article.id}`}
+                  onClick={ClickEvent}>
               <a>{article.title}</a>
             </Link>
           </li>
